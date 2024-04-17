@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles/desk.css">
+    <link rel="stylesheet" href="styles/roboto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <button class="menu-button" onclick=toggleNav()><img width="25px" src="src/Снимок-экрана-2024-03-20-163249.svg"
+                alt=""></button>
+
+        <span class="logo roboto-regular-italic"> Logo </span>
+        <span onclick="hideAside()" class="user-logo">V</span>
+    </header>
+    <nav>
+        <a href="index.html" class=" nav-element active"> <img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Доска</span>
+        </a>
+        <a href="clients.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Клиенты</span></a>
+        <a href="ticket.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Обращение</span></a>
+    </nav>
+    <form class="new-ticket-popup roboto-regular-italic hide">
+        <h2>Новое обращение</h2>
+        <button onclick="closeNewTicket()" class="popup-close"> закрыть</button>
+        <fieldset>
+            <legend>ts</legend>
+            <ol>
+                <li>
+                    <label for="name">Специалист:</label>
+                    <select name="specialist" id="specialist">
+                        <option value="1"> 1-st line</option>
+                        <option value="2"> 2-nd line</option>
+                        <option value="3"> engineer</option>
+                        <option value="4"> client manager</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="age">Тип обращения:</label>
+                    <select name="typeOfTicket" id="">
+
+                    </select>
+                </li>
+                <li>
+                    <label for="age">Приоритет:</label>
+                    <select name="typeOfTicket" id="">
+
+                    </select>
+                </li>
+
+
+
+            </ol>
+        </fieldset>
+        <fieldset>
+            <legend>Клиент</legend>
+            <ol>
+                <li>
+                    <label for="age">Адрес:</label>
+                    <div class="address">
+                        <input placeholder="City" type="search" list="cities">
+                        <input placeholder="street" type="search"><br>
+                        <input placeholder="home" type="search">
+                        <input placeholder="apartment" type="search">
+                        <datalist id="cities">
+                            <option value="Ufa">Ufa</option>
+                            <option value="Kazan">Kazan</option>
+                        </datalist>
+                    </div>
+                </li>
+                <li>
+                    <label id="phone" for="age">Номер телефона:</label>
+                    <input type="tel" pattern="+7[0-9]{10}" name="" id="">
+                </li>
+                <li>
+                    <label for="age">Описание:</label>
+                    <textarea required name="description" id="" cols="30" rows="10"></textarea>
+                </li>
+            </ol>
+        </fieldset>
+        <input type="submit">
+
+    </form>
+    <main>
+
+        <div class="main-header">
+            <div class="roboto-regular-italic"> Desk</div>
+            <div onclick="newTicket()" class="new-ticket roboto-medium-italic"> + NEW </div>
+
+            <div class="owner-filter-element active">
+                All Tickets
+            </div>
+            <div class="owner-filter-element">
+                My Tickets
+            </div>
+            <div class="owner-filter-element">
+                My Tickets
+            </div>
+            <div class="owner-filter-element">
+                My Tickets
+            </div>
+
+        </div>
+        <div class="desk ">
+            <div class="desk-row">
+                <input type="checkbox" name="" id="">
+                <span class="desk-element header"> № </span>
+                <span class="desk-element header"> Specialist </span>
+                <span class="desk-element header"> Type </span>
+                <span class="desk-element header"> Priority </span>
+                <span class="desk-element header wide"> Description </span>
+                <span class="desk-element header"> Date </span>
+                <!-- <span class="desk-element wide">
+                    <Address>Address</Address>
+                </span>
+                <span class="desk-element"> Номер телефона</span> -->
+
+            </div>
+            <div class="desk-row">
+                <input type="checkbox" name="" id="">
+                <span class="desk-element"> 1 </span>
+                <select class="desk-element">
+                    <option value="1"> 1-st line</option>
+                    <option value="2"> 2-nd line</option>
+                    <option value="3"> engineer</option>
+                    <option value="4"> client manager sdfsdfsddfsdssd</option>
+                </select>
+                <select class="desk-element">
+                    <option value=""> some type</option>
+                </select>
+                <select class="desk-element">
+                    <option value="">Низкий</option>
+                    <option value="">Средний</option>
+                    <option value="">Высокий</option>
+                    <option value="">Очень высокий</option>
+                </select>
+                <textarea class="desk-element wide"> au fg gff vggfggffg ggfggffg ggfggffg ggfggffg ggfggffg ggfggffg gg fg
+                    f gfgf g fgf gf gffisdufhauhaiuhsau chisdu hsdiuch isduchiu sdchisduch isduchsdiuchi sduchsdi
+                    uchsdiuchsdiu </textarea>
+                <input type="date" value="2018-07-22" class="desk-element">
+                <!-- <textarea class="desk-element wide"> u fg gff vggfggffg ggfggffg ggfggffg ggfggffg ggfggffg ggfggffg gg fg
+                    f gfgf g fgf gf gffisdufhauhaiuhsau chisdu hsdiuch isduchiu sdchisduch isduchsdiuchi sduchsdi
+                    uchsdiuchsdiu </textarea>
+                <input type="tel" class="desk-element"> -->
+
+            </div>
+            <div class="desk-row">
+                <input type="checkbox" name="" id="">
+                <span class="desk-element"> 1 </span>
+                <select disabled class="desk-element">
+                    <option value="1"> 1-st line</option>
+                    <option value="2"> 2-nd line</option>
+                    <option value="3"> engineer</option>
+                    <option value="4"> client manager sdfsdfsddfsdssd</option>
+                </select>
+                <select disabled class="desk-element">
+                    <option value=""> some type</option>
+                </select>
+                <select disabled class="desk-element">
+                    <option value="">Низкий</option>
+                    <option value="">Средний</option>
+                    <option value="">Высокий</option>
+                    <option value="">Очень высокий</option>
+                </select>
+                <textarea disabled class="desk-element wide"> au fg gff vggfggffg ggfggffg ggfggffg ggfggffg ggfggffg ggfggffg gg fg
+                    f gfgf g fgf gf gffisdufhauhaiuhsau chisdu hsdiuch isduchiu sdchisduch isduchsdiuchi sduchsdi
+                    uchsdiuchsdiu </textarea>
+                <input  disabled type="date" value="2018-07-22" class="desk-element">
+                <!-- <textarea class="desk-element wide"> u fg gff vggfggffg ggfggffg ggfggffg ggfggffg ggfggffg ggfggffg gg fg
+                    f gfgf g fgf gf gffisdufhauhaiuhsau chisdu hsdiuch isduchiu sdchisduch isduchsdiuchi sduchsdi
+                    uchsdiuchsdiu </textarea>
+                <input type="tel" class="desk-element"> -->
+
+            </div>
+            <div class="desk-row last-row">
+                 <div class="last">
+                    <span>1/100</span> 
+                    <span class="arrow"><</span> 
+                    <span class="arrow">></span> 
+                   
+                </div>
+
+            </div>
+            </div>
+           
+        </div>
+        <div class="admin-panel ">
+            <button class="admin-panel-btn">Assign</button>
+            <button class="admin-panel-btn">Close</button>
+            <button class="admin-panel-btn">Delete</button>
+        </div>
+
+
+
+    </main>
+    <aside>
+        <img class="user-photo" src="src/uder.jpg" alt="user photo">
+        <span class="roboto-regular-italic">Vaga</span>
+
+
+        <span class="roboto-regular-italic">обращений решено за месяц:</span>
+        <span>100/100</span>
+        <progress id="file" max="100" value="100"> </progress>
+    </aside>
+    <footer>
+        &copy; KNITU-KAI
+    </footer>
+    <script src="https://unpkg.com/imask"></script>
+
+    <script src="scripts/deskScript.js"></script>
+</body>
+
+</html>

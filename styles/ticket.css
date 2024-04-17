@@ -1,0 +1,138 @@
+@import url(styles.css);
+main{
+    grid-template-rows: 100px 1fr;
+
+}
+.ticket{
+    /* border: 1px solid green; */
+    justify-self: center;
+    width: 100%;
+    height: 100%;  
+    display: grid;
+
+
+}
+#ticketScreens{
+    width: 500px;
+}
+.file-input{
+    display: flex;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 1px solid gainsboro;
+    background-color: rgb(238, 246, 253);
+    border-radius: 3%;
+}
+.hover{
+    border: 2px solid black;
+}
+form.close-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.close-form{
+    position:absolute;
+    justify-self: center;
+    align-self: center;
+    z-index: 999;
+}
+
+.close-form input[type="text"],
+.close-form input[type="file"],
+.close-form textarea,
+.close-form button  {
+    width: 100%;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.close-form button {
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-form button:hover {
+    background-color: #4a54e1;
+} 
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-gap: 20px;
+    align-self: stretch;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.data-grid div {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.data-grid div.header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.button {
+    background-color: #5c67f2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    height: min-content;
+}
+
+.button:hover {
+    background-color: #4a54e1;
+}
+.close-form-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,198 @@
+body{
+    display: grid;
+    background-color: #F9FAFB;
+
+    grid-template-columns: 200px 1fr minmax(200px, 250px);
+    grid-template-rows: min-content  1fr min-content;
+    grid-template-areas: "header header header"
+                         "nav main aside"
+                         "footer footer footer";
+    height: 100vh;
+    margin: 0;
+    pointer-events:all;
+}
+a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+nav{
+    display: grid;
+    background-color: #171e28;
+    grid-area: nav;
+    grid-template-rows: repeat(4, min-content);
+    row-gap: 5px;
+    padding: 15px 0px;
+    align-items: center;
+}
+header{
+    background-color: #EEF2FF;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 75px 125px 1fr ;
+    border-top: 3px solid #BFDBFE;
+    border-bottom: 1px solid #A5B4FC;
+}
+aside{
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#f3f1ed;
+}
+.user-photo{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+.user-photo-wrapper{
+    border-radius: 50%;
+}
+main{
+    display: grid;
+    grid-area: main;
+    grid-template-rows: 100px 1fr min-content;
+    padding: 0px  0px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(188,188,199,1) 0%, rgba(220,220,230,1) 0%, rgba(232,232,235,1) 21%, rgba(245,245,245,1) 70%, rgba(255,255,255,1) 100%);
+    /* filter: blur(5px); */
+
+}
+footer{
+    background-color: #374151;
+    grid-area: footer;
+}
+.menu-button{
+    align-self: center;
+    justify-self: center;
+    background-color: #e7e9f2;
+    border: none;
+
+}
+.menu-button:hover{
+    background-color: #EEF2FF;
+    box-shadow: 0 0 3px;
+    cursor: pointer;
+}
+.logo{
+    align-self: center;
+    justify-self: center;
+    font-size: 22px;
+    text-shadow: #A5B4FC 1px 1px 3px;
+}
+.user-logo{
+    display: flex;
+    justify-self: end;
+    align-self: center;
+    background-color: green;
+    margin-right: 20px;
+    height: 35px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    
+}
+.nav-element{
+    display: grid;
+    color: #F9FAFB;
+    grid-template-columns: 25px 1fr;
+    padding: 5px 20px ;
+    column-gap: 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.nav-element:hover{
+    border-left: 2px solid #BFDBFE;
+    background-color: #6B7280;
+    cursor: pointer;
+}
+.nav-img{
+    justify-self: center;
+}
+
+.main-header{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr) ;
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #f1f3fa;
+}
+.new-ticket{
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    grid-column: 9 / 9;
+    grid-row: 1 / 2;
+}
+.new-ticket-popup{
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    position:absolute;
+    border-radius: 10%;
+    background-color: whitesmoke;
+    padding-bottom: 20px;
+    
+}
+.popup-close{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+}
+.new-ticket:hover{
+    background-color: #EEF2FF;
+    box-shadow: 0 0 3px;
+    cursor: pointer;
+}
+select{
+    width: 100px;
+}
+fieldset{
+    width: 80%;
+}
+.address input {
+    align-self: center;
+}
+.admin-panel-btn{
+    margin: 10px;
+    padding: 4px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8%;
+    border-width: 0.5px;
+    border-color: #BFDBFE;
+
+}
+.admin-panel-btn:hover{
+    border-bottom: 1px solid #A5B4FC;
+    text-shadow: #A5B4FC 0 0 2px;
+    cursor: pointer;
+
+}
+.owner-filter-element.active{
+     border-bottom: 1px solid #A5B4FC !important;
+}
+.nav-element.active{
+    border-left: 2px solid #BFDBFE;
+}
+.hide{
+    display: none;
+}

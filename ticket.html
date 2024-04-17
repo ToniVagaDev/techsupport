@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles/ticket.css">
+    <link rel="stylesheet" href="styles/roboto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body >
+
+    <header >
+        <button class="menu-button" onclick=toggleNav()><img width="25px" src="src/Снимок-экрана-2024-03-20-163249.svg"
+                alt=""></button>
+
+        <span class="logo roboto-regular-italic"> Logo </span>
+        <span onclick="hideAside()" class="user-logo">V</span>
+    </header>
+    <nav>
+        <a href="index.html" class=" nav-element "> <img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Доска</span>
+        </a>
+        <a href="clients.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Клиенты</span></a>
+        <a href="ticket.html" class="nav-element active"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Обращение</span></a>
+    </nav>
+
+    <div onclick="closeEndTicket()" class="close-form-background hide">
+
+    </div>
+    <form action="/submit-your-form-handler" class="close-form hide" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="resolution">Описание решения:</label>
+            <textarea id="resolution" name="resolution" rows="4" cols="50" required></textarea>
+        </div>
+        <div>
+            <label for="documentFile">Прикрепить документ:</label>
+            <input type="file" id="documentFile" name="documentFile" accept=".doc,.docx,.pdf">
+        </div>
+        <div>
+            <label for="imageFile">Прикрепить изображение:</label>
+            <input type="file" id="imageFile" name="imageFile" accept="image/*">
+        </div>
+        <div>
+            <label for="audioFile">Прикрепить аудиофайл:</label>
+            <input type="file" id="audioFile" name="audioFile" accept="audio/*">
+        </div>
+        <div>
+            
+            <label for="solutionCheckBox">Обращение не решено
+                <input type="checkbox" name="solutionCheckBox" id="solutionCheckBox">
+
+            </label>
+        </div>
+        <div>
+            <button onclick="closeEndTicket()" type="submit">Закрыть обращение</button>
+        </div>
+    </form>
+
+
+    <main onclick="console.log('click body')">
+        <div class="main-header ">
+            <div class="roboto-regular-italic"> Обращение </div>
+        </div>
+        <div class="ticket">
+            <!-- <form action="">
+                <div class="file-input">выберите файлы</div>
+                <input class="" type="file" accept="image/*" multiple id="ticketScreens"/>
+                <div class="file-input">выберите файлы</div>
+                <input class="" type="file" accept="audio/*" id="tibgcketScreens"/><br>
+                <input type="checkbox" name="" id=""> Обращение не решено
+                <img src="" alt="smth" id="im">
+            </form> -->
+            <div class="container">
+                <div>
+                    <h2>Данные клиента</h2>
+                    <div class="data-grid">
+                        <div class="header">Имя клиента</div>
+                        <div>Иван Иванов</div>
+                        <div class="header">Контактный номер</div>
+                        <div>+7 123 456 7890</div>
+                        <div class="header">Электронная почта</div>
+                        <div>ivanov@example.com</div>
+                        <div class="header">Тип клиента</div>
+                        <div>Частное лицо</div>
+                    </div>
+                </div>
+                <div>
+                    <h2>Детали обращения</h2>
+                    <div class="data-grid">
+                        <div class="header">Номер обращения</div>
+                        <div>12345</div>
+                        <div class="header">Дата обращения</div>
+                        <div>2024-04-12</div>
+                        <div class="header">Категория проблемы</div>
+                        <div>Интернет не работает</div>
+                        <div class="header">Описание проблемы</div>
+                        <div>Отсутствует подключение к интернету с 10 утра</div>
+                        <div class="header">Предпринятые действия</div>
+                        <div>-</div>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <a href="/base-of-knowledge" class="button">База знаний</a>
+                    <a href="" class="button">Скачать файлы</a>
+                    <a  onclick="endTicket()" class="button">Закрыть обращение</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="admin-panel ">
+            <button class="admin-panel-btn">Assign</button>
+            <button class="admin-panel-btn">Edit</button>
+            <button class="admin-panel-btn">Delete</button>
+        </div> -->
+    </main>
+    <aside>
+        <img class="user-photo" src="src/uder.jpg" alt="user photo">
+        <span class="roboto-regular-italic">Vaga</span>
+
+
+        <span class="roboto-regular-italic">обращений решено за месяц:</span>
+        <span>100/100</span>
+        <progress id="file" max="100" value="100"> </progress>
+    </aside>
+    <footer>
+        &copy; KNITU-KAI
+    </footer>
+    <script src="https://unpkg.com/imask"></script>
+
+    <script src="scripts/deskScript.js"></script>
+</body>
+
+</html>
