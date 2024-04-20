@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles/knowledge.css">
+    <link rel="stylesheet" href="styles/roboto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <button class="menu-button" onclick=toggleNav()><img width="25px" src="src/Снимок-экрана-2024-03-20-163249.svg"
+                alt=""></button>
+
+        <span class="logo roboto-regular-italic"> Logo </span>
+        <span onclick="hideAside()" class="user-logo">V</span>
+    </header>
+    <nav>
+        <a href="index.html" class=" nav-element active"> <img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Доска</span>
+        </a>
+        <a href="clients.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Клиенты</span></a>
+        <a href="ticket.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Обращение</span></a>
+    </nav>
+
+    <main>
+        <ul class="menu">
+            <li onclick="showCategory('tech')">Технические вопросы</li>
+            <li onclick="showCategory('billing')">Биллинг</li>
+            <li onclick="showCategory('general')" class="active">Общие вопросы</li>
+        </ul>
+        <div class="container">
+            <h1>База знаний</h1>
+            <div class="search-box">
+                <input type="text" placeholder="Введите ключевые слова для поиска...">
+                <button>Поиск</button>
+            </div>
+            <div id="tech" class="category">
+                <!-- Вопросы технической категории -->
+                <div class="faq-item">
+                    <div class="question">Как перезагрузить мой модем?</div>
+                    <div class="answer">Отключите модем от питания, подождите 30 секунд, затем снова подключите его к сети.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="question">Что делать, если скорость интернета ниже ожидаемой?</div>
+                    <div class="answer">Убедитесь, что ваше устройство не загружено программами, потребляющими большой объем данных. Попробуйте выполнить тест скорости в режиме инкогнито.</div>
+                </div>
+            </div>
+            <div id="billing" class="category ">
+                <!-- Вопросы категории биллинг -->
+                <div class="faq-item">
+                    <div class="question">Как изменить мой тарифный план?</div>
+                    <div class="answer">Войдите в ваш личный кабинет на сайте и выберите раздел "Тарифы", где можно изменить ваш текущий план.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="question">Как проверить свой текущий баланс?</div>
+                    <div class="answer">Ваш текущий баланс можно увидеть в личном кабинете под разделом "Финансы".</div>
+                </div>
+            </div>
+            <div id="general" class="category active">
+                <!-- Общие вопросы -->
+                <div class="faq-item">
+                    <div class="question">Как связаться со службой поддержки?</div>
+                    <div class="answer">Вы можете связаться со службой поддержки по телефону, электронной почте или через чат на нашем сайте.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <aside>
+        <img class="user-photo" src="src/uder.jpg" alt="user photo">
+        <span class="roboto-regular-italic">Vaga</span>
+
+
+        <span class="roboto-regular-italic">обращений решено за месяц:</span>
+        <span>100/100</span>
+        <progress id="file" max="100" value="100"> </progress>
+    </aside>
+    <footer>
+        &copy; KNITU-KAI
+    </footer>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        function showCategory(categoryId) {
+            var categories = document.getElementsByClassName('category');
+            for (var i = 0; i < categories.length; i++) {
+                categories[i].style.display = 'none';
+                categories[i].classList.remove('active');
+            }
+            var activeCategory = document.getElementById(categoryId);
+            activeCategory.style.display = 'block';
+            activeCategory.classList.add('active');
+
+            var menuItems = document.querySelectorAll('.menu li');
+            menuItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+            document.querySelector('.menu li[onclick="showCategory(\'' + categoryId + '\')"]').classList.add('active');
+        }
+    </script>
+    <script src="scripts/deskScript.js"></script>
+</body>
+
+</html>
