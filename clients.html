@@ -19,13 +19,13 @@
         <span onclick="hideAside()" class="user-logo">V</span>
     </header>
     <nav>
-        <a href="index.html" class=" nav-element "> <img src="src/nav-img.png" width="20px" class="nav-img"><span
+        <a href="../index.html" class=" nav-element "> <img src="src/nav-img.png" width="20px" class="nav-img"><span
                 class="nav-title ">Доска</span>
         </a>
-        <a href="clients.html" class="nav-element active"><img src="src/nav-img.png" width="20px" class="nav-img"><span
+        <a href="../clients.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
                 class="nav-title ">Клиенты</span></a>
-        <a href="ticket.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
-                class="nav-title ">Обращение</span></a>
+        <a href="../ticket.html" class="nav-element active"><img src="src/nav-img.png" width="20px"
+                class="nav-img"><span class="nav-title ">Обращение</span></a>
     </nav>
     <form class="new-ticket-popup roboto-regular-italic hide">
         <h2>Новое обращение</h2>
@@ -93,7 +93,7 @@
             <div class="roboto-regular-italic"> Клиенты </div>
             <div onclick="newTicket()" class="new-ticket roboto-medium-italic"> + NEW </div>
             <div id="client-search">
-                <span class="roboto-light">Найти клиента по <select name="" id="input-choice">
+                <span class="roboto-light">Найти клиента по <select class="roboto-light" name="" id="input-choice">
                         <option value="">номеру телефона:</option>
                         <option value="">номеру договора:</option>
                     </select></span>
@@ -103,7 +103,7 @@
         </div>
         <div class="container">
             <div class="client-info-side">
-                <img width="200px" src="src/client.png" alt="clientImage">
+                <img width="200px" src="../src/client.png" alt="clientImage">
 
                 <article>
                     <span class="field">Тип клиента: </span><select class="client-info-value">
@@ -129,14 +129,15 @@
             <div class="client-info ">
                 <span class="roboto-medium--italic header">Стетхем Джейсон Валентинович</span>
                 <article>
-                    <span class="field">Номер договора: </span><input type="text"
-                        value="5555-5555-5555-5555" class="client-info-value agreement"></input>
-                    <span class="field">Номер телефона: </span><input type="tel" value="+7(565)225-51-45" class="client-info-value"></input>
+                    <span class="field">Номер договора: </span><input type="text" value="5555-5555-5555-5555"
+                        class="client-info-value agreement"></input>
+                    <span class="field">Номер телефона: </span><input type="tel" value="+7(565)225-51-45"
+                        class="client-info-value"></input>
                     <span class="field">Адресс: </span><span class="client-info-value">
-                        <input placeholder="City"  type="search" list="cities">
-                        <input placeholder="street"  type="search"><br>
-                        <input placeholder="home"  type="search">
-                        <input placeholder="apartment"  type="search">
+                        <input placeholder="City" type="search" list="cities">
+                        <input placeholder="street" type="search"><br>
+                        <input placeholder="home" type="search">
+                        <input placeholder="apartment" type="search">
                         <datalist id="cities">
                             <option value="Ufa">Ufa</option>
                             <option value="Kazan">Kazan</option>
@@ -146,7 +147,7 @@
                         <option value="tariff2">tariff2</option>
                         <option value="tariff3">tariff3</option>
                     </select>
-                  
+
                     <span class="field">Домашний интернет: </span><select class="client-info-value">
                         <option value="">-</option>
                         <option value="">100</option>
@@ -155,15 +156,14 @@
                         <option value="">400</option>
                     </select>
                     <span class="field">Электронная почта: </span><input value="ivanov@example.com
-                    "
-                        class="client-info-value"></input>
-                    
+                    " class="client-info-value"></input>
+
                     </select>
-                    
+
                 </article>
             </div>
         </div>
-        
+
         <div class="admin-panel ">
             <button class="admin-panel-btn">Assign</button>
             <button class="admin-panel-btn">Edit</button>
@@ -171,21 +171,22 @@
         </div>
     </main>
     <aside>
-        <img class="user-photo" src="src/uder.jpg" alt="user photo">
+        <img class="user-photo" src="../src/uder.jpg" alt="user photo">
         <span class="roboto-regular-italic">Vaga</span>
 
 
         <span class="roboto-regular-italic">обращений решено за месяц:</span>
         <span>100/100</span>
         <progress id="file" max="100" value="100"> </progress>
+        <a class="admin" href="admin.html">Админ</a>
     </aside>
     <footer>
         &copy; KNITU-KAI
     </footer>
-    <script src = "scripts/imask.js"></script>
+    <script src="scripts/imask.js"></script>
     <!-- <script src="https://unpkg.com/imask"></script> -->
-
-    <script  src="scripts/deskScript.js"></script>
+    <script src="scripts/mask.js"></script>
+    <script src="scripts/deskScript.js"></script>
 </body>
 
 </html>

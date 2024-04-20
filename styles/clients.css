@@ -6,6 +6,7 @@
 #client-search{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     grid-column: 3 / 8;
     grid-row: 2;
@@ -15,7 +16,8 @@
     width: min-content;
 }
 #client-search input {
-    width: 100px;
+    width: 110px;
+    margin-right: 5px;
 }
 #client-search button{
     width: min-content;
@@ -45,6 +47,37 @@ article{
     align-self: center;
     grid-column: 1 / span 1;
     color: rgb(188, 192, 195);
+}
+#client-search select
+{
+    font-size: 16px;
+    height: 35px;
+    width: min-content;
+    background-color: inherit;
+    border: none;
+}
+#client-search select:focus-visible{
+    outline: none;
+
+}
+/* #client-search input{
+    height: 35px;
+    padding: 0;
+    border: px solid black;
+    
+} */
+
+button {
+    padding: 10px 20px;
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a54e1;
 }
 .client-info-value{
     align-self: center;
