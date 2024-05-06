@@ -79,8 +79,13 @@ function hideAside() {
 
 function newTicket() {
     document.querySelector('.new-ticket-popup').classList.toggle('hide');
+    document.querySelector('.close-form-background').classList.toggle('hide');
     document.querySelector('main').style.filter = 'blur(10px)';
     document.querySelector('main').style.pointerEvents = 'none';
+    const address = document.querySelectorAll('.address input')
+    for (let i =0; i < address.length/2; i++){
+        address[i].value = address[i + address.length/2].value
+    }
 }
 
 function endTicket() {
@@ -100,6 +105,7 @@ function closeEndTicket() {
 
 function closeNewTicket() {
     document.querySelector('.new-ticket-popup').classList.toggle('hide');
+    document.querySelector('.close-form-background').classList.toggle('hide');
     document.querySelector('main').style.filter = 'none'
     document.querySelector('main').style.pointerEvents = 'all';
 

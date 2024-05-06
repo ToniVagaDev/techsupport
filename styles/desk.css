@@ -101,6 +101,8 @@ textarea.desk-element{
     opacity: 1;
     position: relative;
     -webkit-appearance: none ;
+    border: none;
+    background-color: inherit;
 }
 
 
