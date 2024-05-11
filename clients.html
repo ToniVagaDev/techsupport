@@ -37,10 +37,6 @@
                 <li>
                     <label for="name">Специалист:</label>
                     <select name="specialist" id="specialist">
-                        <option value="1"> 1-st line</option>
-                        <option value="2"> 2-nd line</option>
-                        <option value="3"> engineer</option>
-                        <option value="4"> client manager</option>
                     </select>
                 </li>
                 <li>
@@ -77,8 +73,8 @@
                     </div>
                 </li>
                 <li>
-                    <label id="phone" for="phone">Номер телефона:</label>
-                    <input type="tel" pattern="+7[0-9]{10}" name="" id="">
+                    <label  for="phone">Номер телефона:</label>
+                    <input type="tel" pattern="+7[0-9]{10}" name="" id="phone">
                 </li>
                 <li>
                     <label for="age">Описание:</label>
@@ -98,11 +94,11 @@
                         <option value="">номеру телефона:</option>
                         <option value="">номеру договора:</option>
                     </select></span>
-                <input width="100px" type="tel" pattern="+7[0-9]{10}"><button type="button">поиск</button>
+                <input width="100px" id="search" type="tel" pattern="+7[0-9]{10}"><button id="search-btn" onclick="import getClientByPhone from './scripts/client.js'" type="button">поиск</button>
             </div>
 
         </div>
-        <div class="container">
+        <div class="container" style="filter: blur(10px);">
             <div class="client-info-side">
                 <img width="200px" src="../src/client.png" alt="clientImage">
 
@@ -132,32 +128,31 @@
                 <article>
                     <span class="field">Номер договора: </span><input type="text" value="5555-5555-5555-5555"
                         class="client-info-value agreement"></input>
-                    <span class="field">Номер телефона: </span><input type="tel" value="+7(565)225-51-45"
-                        class="client-info-value"></input>
-                    <span class="field">Адресс: </span><span class="client-info-value address">
+                    <span class="field">Номер телефона: <button  class="phone-button" ><</button> <button  class="phone-button">></button></span><input type="tel" value="+7(565)225-51-45"
+                        class="client-info-value phone"></input>
+                    <span class="field">Тариф: </span><select  class="client-info-value tariff">
+                        <option selected value="tariff1">tariff1</option>
+                        <option value="tariff2">модный</option>
+                        <option value="tariff3">tariff3</option>
+                    </select>
+                    <span class="field">Адресс: <br> <button class="phone-button" ><</button> <button  class="phone-button">></button> </span><span class="client-info-value address">
                         <input  value="Ufa" placeholder="City" type="search" list="cities">
-                        <input  value="Gorbatova" placeholder="Street" type="search"><br>
-                        <input  value="56" placeholder="Home" type="search">
-                        <input  value="11" placeholder="Apartment" type="search">
+                        <input  value="Gorbatova" placeholder="Street" type="search">
+                        <input  value="56" class="address-small" placeholder="Home" type="search">
+                        <input  value="11" class="address-small" placeholder="Apartment" type="search">
                         <datalist id="cities">
                             <option value="Ufa">Ufa</option>
                             <option value="Kazan">Kazan</option>
                         </datalist></span>
-                    <span class="field">Тариф: </span><select value="grsfdgsdfg" class="client-info-value">
-                        <option value="tariff1">tariff1</option>
-                        <option value="tariff2">tariff2</option>
-                        <option value="tariff3">tariff3</option>
-                    </select>
-
-                    <span class="field">Домашний интернет: </span><select class="client-info-value">
+                    <span class="field">Домашний интернет: </span><select class="client-info-value homeInternet">
                         <option value="">-</option>
                         <option value="">100</option>
                         <option value="">200</option>
                         <option value="">300</option>
-                        <option value="">400</option>
+                        <option value="">1000</option>
                     </select>
                     <span class="field">Электронная почта: </span><input value="ivanov@example.com
-                    " class="client-info-value"></input>
+                    " class="client-info-value email"></input>
 
                     </select>
 
@@ -184,10 +179,12 @@
     <footer>
         &copy; KNITU-KAI
     </footer>
+    <!-- <script src=" scripts/service.js"></script> -->
     <script src="scripts/imask.js"></script>
     <!-- <script src="https://unpkg.com/imask"></script> -->
     <script src="scripts/mask.js"></script>
     <script src="scripts/deskScript.js"></script>
+    <script type="module" src="scripts/client.js"></script>
 </body>
 
 </html>
