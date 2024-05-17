@@ -1,34 +1,66 @@
 class PhoneService {
     _apiBase = 'http://localhost:5500/api';
 
-    async postResource(url, request, headers){
+    async postResource(url, body, headers = ''){
+        console.log(JSON.stringify(body))
         const res = await fetch(`${this._apiBase}/${url}`, {
             method: 'POST',
-            headers: headers,
-            body: JSON.stringify(request)
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : `bearer ${localStorage.getItem('token')}`
+            },
+
+            body: JSON.stringify({...body})
         });
         // console.log(res.status)
         if (!res.ok) {
+            if(res.status == 403) {
+                document.location.href = 'auth.html';
+            }
             throw new Error(`Could not fetch ${url} ` +
-                `received ${res.status}`);
+                `received ${res.status}`, (await res.json()).message);
         }
         return await res.json()
+    }
+    
+    async postRequest(body, headers = ''){
+        this.postResource('/request', body, headers)
     }
 
     async getResource(url) {
 
         const res = await fetch(`${this._apiBase}/${url}`, {
             method: 'GET',
+            headers: {
+                'Authorization' : `bearer ${localStorage.getItem('token')}`
+            }
         });
         // console.log(res.status)
         if (!res.ok) {
-            throw new Error(`Could not fetch ${url}` +
-                `received ${res.status}`);
+            if(res.status == 403) {
+                document.location.href = 'auth.html';
+            }
+            throw new Error( (await res.json()).message);
         }
         return await res.json()
     }
+    async getAllRequests(){
+        return await this.getResource('/requests')
+    }
+    async getRequest(id){
+        return await this.getResource(`/request/${id}`)
+    }
+    async getAllRequestType(){
+        return await this.getResource('/requestTypes')
+    }
+    async getRequestType(id){
+        return await this.getResource(`/requestType/${id}`)
+    }
     async getAllSpecialistType(){
         return await this.getResource('/specialistTypes')
+    }
+    async getSpecialistType(id){
+        return await this.getResource(`/specialistType/${id}`)
     }
     async getPhoneId(phone) {
         return await this.getResource(`/phones/id/${phone}`)

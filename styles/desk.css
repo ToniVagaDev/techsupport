@@ -58,7 +58,7 @@
     color: rgb(188, 192, 195);
 }
 .last-row{
-    grid-row: 10/11;
+    grid-row: 12/13;
 }
 .last{
     display: grid;
@@ -122,7 +122,7 @@ textarea.desk-element:focus{
  .wide{
     grid-column: span 3 ;
     padding: 0 10px;
-    max-width: 240px;
+    /* max-width: 240px; */
 }
 
 .admin-panel{

@@ -3,6 +3,9 @@ import {PhoneService} from './service.js'
 const service = new PhoneService();
 
 document.querySelector('#search-btn').addEventListener('click' ,getClientByPhone);
+
+document.querySelector('#post-request').addEventListener('click', postRequest);
+
 const arrowBtns = document.querySelectorAll('.phone-button');
 arrowBtns[0].addEventListener('click', prevPhone);
 arrowBtns[1].addEventListener('click', nextPhone);
@@ -17,6 +20,15 @@ specTypes.forEach((type) => {
     option.value = type._id;
     specTypeSelect.append(option);
 })
+const reqTypeSelect = document.querySelector('#ticket-type')
+const reqType = await service.getAllRequestType()
+reqType.forEach(type => {
+    const option = document.createElement('option');
+    option.textContent = type.name;
+    option.value = type._id;
+    reqTypeSelect.append(option);
+})
+
 let client
 let phoneIndex = 0;
 let addressIndex = 0;
@@ -108,17 +120,19 @@ async function getClientByPhone() {
 
 async function postRequest(){
     const date = new Date();
-    console.log(date.getDate())
+    console.log(client)
     const body = {
         status: 'open',
         creationDate: date,
-        clientId: client._id,
-        phoneNumber: document.querySelector('#phone').value,
-
-
-
+        clientId: client[0]._id,
+        phoneNumber: client[0].phoneNumbers[phoneIndex] /*document.querySelector('#phone').value*/,
+        status: 'open',
+        description: document.querySelector('#description').value,
+        specialistType: document.querySelector('#specialist').value,
+        typeId: document.querySelector('#ticket-type').value,
+        address: client[0].address[addressIndex]
     }
+    service.postRequest(body)
 }
 
-export default getClientByPhone
 // getClientByPhone("+7(999)123-45-67")
