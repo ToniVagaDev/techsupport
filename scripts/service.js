@@ -2,7 +2,6 @@ class PhoneService {
     _apiBase = 'http://localhost:5500/api';
 
     async postResource(url, body, headers = ''){
-        console.log(JSON.stringify(body))
         const res = await fetch(`${this._apiBase}/${url}`, {
             method: 'POST',
             headers: {
@@ -24,7 +23,16 @@ class PhoneService {
     }
     
     async postRequest(body, headers = ''){
-        this.postResource('/request', body, headers)
+        return await this.postResource('/request', body, headers)
+    }
+    async postClient(body, headers = ''){
+        return await this.postResource('/client', body, headers)
+    }
+    async postPhone(body, headers = ''){
+        return await this.postResource('/phones', body, headers)
+    }
+    async postAddress(body, headers = ''){
+        return await this.postResource('/address', body, headers)
     }
 
     async getResource(url) {
@@ -73,9 +81,19 @@ class PhoneService {
     async getAddressById(id) {
         return await this.getResource(`/address/${id}`)
     }
+    async getAllAddresses() {
+        return await this.getResource(`/addresses`)
+    }
+    async getAddressByAddress(address) {
+        console.log(Object.values(address).join('.'))
+        return await this.getResource(`/address/byAddress/${Object.values(address).join('.')}`)
+    }
 
     async getClientTypeById(id) {
         return await this.getResource(`/clientType/${id}`)
+    }
+    async getAllClientType(){
+        return await this.getResource('/clientTypes')
     }
 
     async getPhone(phone) {
@@ -84,6 +102,10 @@ class PhoneService {
 
     async getTariff(tariffId) {
         return await this.getResource(`tariffs/${tariffId}`)
+    }
+
+    async getAllTariff() {
+        return await this.getResource(`tariffs`)
     }
 
     async getClientByPhoneId(phoneId) {

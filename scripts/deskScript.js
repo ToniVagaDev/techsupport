@@ -1,6 +1,6 @@
 let files = [];
 let user = {
-    role: 'user'
+    role: 'admin'
 }
 document.body.onload  = roleChecker;
 function roleChecker(){
@@ -76,38 +76,50 @@ function hideAside() {
     document.querySelector('body').style.gridTemplateAreas = areas.join(' ')
 
 }
-
-function newTicket() {
-    document.querySelector('.new-ticket-popup').classList.toggle('hide');
-    document.querySelector('.close-form-background').classList.toggle('hide');
+function openModal(selector, afterFunc){
+    document.querySelector(selector).classList.toggle('hide');
+    document.querySelector(`.close-${selector.split('.')[1]}`).classList.toggle('hide');
     document.querySelector('main').style.filter = 'blur(10px)';
     document.querySelector('main').style.pointerEvents = 'none';
-    const address = document.querySelectorAll('.address input')
-    for (let i =0; i < address.length/2; i++){
-        address[i].value = address[i + address.length/2].value
+    if(afterFunc){
+        afterFunc();
     }
 }
+// function newTicket() {
+//     document.querySelector('.new.ticket-modal').classList.toggle('hide');
+//     document.querySelector('.close-ticket-modal').classList.toggle('hide');
+//     document.querySelector('main').style.filter = 'blur(10px)';
+//     document.querySelector('main').style.pointerEvents = 'none';
+//     const address = document.querySelectorAll('.address input')
+//     for (let i =0; i < address.length/2; i++){
+//         address[i].value = address[i + address.length/2].value
+//     }
+// }
 
-function endTicket() {
-    console.log('click button')
-    document.querySelector('.close-form').classList.toggle('hide');
-    document.querySelector('.close-form-background').classList.toggle('hide');
-    document.querySelector('main').style.filter = 'blur(10px)';
-    document.querySelector('main').style.pointerEvents = 'none';
-}
-function closeEndTicket() {
-    document.querySelector('.close-form').classList.toggle('hide');
-    document.querySelector('.close-form-background').classList.toggle('hide');
-    document.querySelector('main').style.filter = 'none';
-    document.querySelector('main').style.pointerEvents = 'all';
-    console.log('close')
-}
+// function endTicket() {
+//     document.querySelector('.close-form').classList.toggle('hide');
+//     document.querySelector('.close-form-background').classList.toggle('hide');
+//     document.querySelector('main').style.filter = 'blur(10px)';
+//     document.querySelector('main').style.pointerEvents = 'none';
+// }
+// function closeEndTicket() {
+//     document.querySelector('.close-form').classList.toggle('hide');
+//     document.querySelector('.close-form-background').classList.toggle('hide');
+//     document.querySelector('main').style.filter = 'none';
+//     document.querySelector('main').style.pointerEvents = 'all';
+// }
 
-function closeNewTicket() {
-    document.querySelector('.new-ticket-popup').classList.toggle('hide');
-    document.querySelector('.close-form-background').classList.toggle('hide');
+// function closeNewTicket() {
+//     document.querySelector('.new.ticket-modal').classList.toggle('hide');
+//     document.querySelector('.close-form-background').classList.toggle('hide');
+//     document.querySelector('main').style.filter = 'none'
+//     document.querySelector('main').style.pointerEvents = 'all';
+//}
+
+function closeModal(selector){
+    document.querySelector(selector).classList.toggle('hide');
+    document.querySelector(`.close-${selector.split('.')[1]}`).classList.toggle('hide');
     document.querySelector('main').style.filter = 'none'
     document.querySelector('main').style.pointerEvents = 'all';
-
 }
 // newTicket();

@@ -32,7 +32,6 @@ function getPrev() {
 
 
 
-
 async function setDesk() {
     desk.innerHTML = ''
     desk.innerHTML = `
@@ -57,7 +56,7 @@ async function setDesk() {
         const type = await service.getRequestType(request.typeId)
         desk.innerHTML += `
         <div class="desk-row">
-        <input type="checkbox" name="" id="">
+        <input type="button" value = "✓" class="accept-btn">
         <span class="desk-element"> ${first+i+1} </span>
         <span  class="desk-element">
              ${specialistType.name}

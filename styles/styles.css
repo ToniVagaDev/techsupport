@@ -144,7 +144,15 @@ footer{
     grid-column: 9 / 9;
     grid-row: 1 / 2;
 }
-.new-ticket-popup{
+.new-client{
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    grid-column: 9 / 9;
+    grid-row: 2 / 3;
+}
+.new{
     display: flex;
     flex-direction: column;
     z-index: 999;
@@ -167,6 +175,11 @@ footer{
     cursor: pointer;
 }
 .new-ticket:hover{
+    background-color: #EEF2FF;
+    box-shadow: 0 0 3px;
+    cursor: pointer;
+}
+.new-client:hover{
     background-color: #EEF2FF;
     box-shadow: 0 0 3px;
     cursor: pointer;
@@ -201,7 +214,12 @@ fieldset{
 .nav-element.active{
     border-left: 2px solid #BFDBFE;
 }
-.close-form-background{
+.close-ticket-modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.close-client-modal{
     position: absolute;
     width: 100%;
     height: 100%;

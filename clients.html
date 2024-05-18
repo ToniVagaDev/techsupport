@@ -10,7 +10,10 @@
 </head>
 
 <body>
-
+    <datalist id="cities"></datalist>
+    <datalist id="streets"></datalist>
+    <datalist id="houses"></datalist>
+    <datalist id="apartments"></datalist>
     <header>
         <button class="menu-button" onclick=toggleNav()><img width="25px" src="src/Снимок-экрана-2024-03-20-163249.svg"
                 alt=""></button>
@@ -24,12 +27,14 @@
         </a>
         <a href="clients.html" class="nav-element active"><img src="src/nav-img.png" width="20px" class="nav-img"><span
                 class="nav-title ">Клиенты</span></a>
-        <a href="ticket.html" class="nav-element "><img src="src/nav-img.png" width="20px"
-                class="nav-img"><span class="nav-title ">Обращение</span></a>
+        <a href="ticket.html" class="nav-element "><img src="src/nav-img.png" width="20px" class="nav-img"><span
+                class="nav-title ">Обращение</span></a>
     </nav>
-    <div onclick="closeNewTicket()" class="close-form-background hide">
+    <div onclick="closeModal('.ticket-modal')" class="close-ticket-modal background hide">
     </div>
-    <form class="new-ticket-popup roboto-regular-italic hide">
+    <div onclick="closeModal('.client-modal')" class="close-client-modal background hide">
+    </div>
+    <form class="new ticket-modal roboto-regular-italic hide">
         <h2>Новое обращение</h2>
         <fieldset>
             <legend>ts</legend>
@@ -85,16 +90,49 @@
         <input type="button" id="post-request">
 
     </form>
+    <form class="new client-modal hide">
+        <label for="fullName">Полное имя:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="agreementId">ID соглашения:</label>
+        <input class="agreement" type="text" id="agreementId" name="agreementId" required>
+
+        <label for="phoneNumbers">Номер телефона:</label>
+        <input type="tel" id="phoneNumbers" name="phoneNumbers" required>
+
+        <label for="tariff"> Тариф:</label>
+        <select name="" id="tariff"></select>
+
+        <label for="address">Адрес :</label>
+        <input class="city" placeholder="City" type="search" list="cities">
+        <input class="street" placeholder="street" type="search" list="streets">
+        <input class="house" placeholder="home" type="search" list="houses">
+        <input class="apartment" placeholder="apartment" type="number"  list="apartments">
+        
+
+        <label for="">Скорость домашнего интернета</label>
+        <input type="number" id="home-internet-speed" name="" required>
+        
+        <label for="typeId">Тип:</label>
+        <select name="" id="client-type2"></select>
+
+        <label for="rating">Рейтинг:</label>
+        <input type="number" id="rating" name="rating" value="0">
+
+        <input type="button" id="post-client" value="Отправить">
+    </form>
     <main>
         <div class="main-header ">
             <div class="roboto-regular-italic"> Клиенты </div>
-            <div onclick="newTicket()" class="new-ticket roboto-medium-italic"> + NEW </div>
+            <div onclick="openModal('.ticket-modal')" class="new-ticket roboto-medium-italic"> +Обращение</div>
+            <div onclick="openModal('.client-modal')" class="new-client roboto-medium-italic"> + Клиент </div>
             <div id="client-search">
                 <span class="roboto-light">Найти клиента по <select class="roboto-light" name="" id="input-choice">
                         <option value="">номеру телефона:</option>
                         <option value="">номеру договора:</option>
                     </select></span>
-                <input width="100px" id="search" type="tel" pattern="+7[0-9]{10}"><button id="search-btn" onclick="import getClientByPhone from './scripts/client.js'" type="button">поиск</button>
+                <input width="100px" id="search" type="tel" pattern="+7[0-9]{10}"><button id="search-btn"
+                    onclick="import getClientByPhone from './scripts/client.js'" type="button">поиск</button>
             </div>
 
         </div>
@@ -103,9 +141,7 @@
                 <img width="200px" src="src/client.png" alt="clientImage">
 
                 <article>
-                    <span class="field">Тип клиента: </span><select class="client-info-value">
-                        <option value="">Частное лицо</option>
-                        <option value="">Компания</option>
+                    <span class="field">Тип клиента: </span><select id="client-type" class="client-info-value ">
                     </select>
                     <span class="field">Уровень важности: </span><select class="client-info-value">
                         <option value="">Низкий</option>
@@ -128,22 +164,26 @@
                 <article>
                     <span class="field">Номер договора: </span><input type="text" value="5555-5555-5555-5555"
                         class="client-info-value agreement"></input>
-                    <span class="field">Номер телефона: <button  class="phone-button" ><</button> <button  class="phone-button">></button></span><input type="tel" value="+7(565)225-51-45"
+                    <span class="field">Номер телефона: <button class="phone-button">
+                            <</button> <button class="phone-button">>
+                        </button></span><input type="tel" value="+7(565)225-51-45"
                         class="client-info-value phone"></input>
-                    <span class="field">Тариф: </span><select  class="client-info-value tariff">
+                    <span class="field">Тариф: </span><select class="client-info-value tariff">
                         <option selected value="tariff1">tariff1</option>
                         <option value="tariff2">модный</option>
                         <option value="tariff3">tariff3</option>
                     </select>
-                    <span class="field">Адресс: <br> <button class="phone-button" ><</button> <button  class="phone-button">></button> </span><span class="client-info-value address">
-                        <input  value="Ufa" placeholder="City" type="search" list="cities">
-                        <input  value="Gorbatova" placeholder="Street" type="search">
-                        <input  value="56" class="address-small" placeholder="Home" type="search">
-                        <input  value="11" class="address-small" placeholder="Apartment" type="search">
-                        <datalist id="cities">
+                    <span class="field">Адресс: <br> <button class="phone-button">
+                            <</button> <button class="phone-button">>
+                        </button> </span><span class="client-info-value address">
+                        <input value="Ufa" placeholder="City" type="search" list="cities">
+                        <input value="Gorbatova" placeholder="Street" type="search">
+                        <input value="56" class="address-small" placeholder="Home" type="search">
+                        <input value="11" class="address-small" placeholder="Apartment" type="search">
+                        <!-- <datalist id="cities">
                             <option value="Ufa">Ufa</option>
                             <option value="Kazan">Kazan</option>
-                        </datalist></span>
+                        </datalist></span> -->
                     <span class="field">Домашний интернет: </span><select class="client-info-value homeInternet">
                         <option value="">-</option>
                         <option value="">100</option>
