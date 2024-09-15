@@ -16,11 +16,11 @@
                 alt=""></button>
 
         <span class="logo roboto-regular-italic"> Logo </span>
-        <span onclick="hideAside()" class="user-logo">V</span>
+        <span onclick="hideAside()" class="user-logo"></span>
     </header>
     <nav>
         <a href="index.html" class=" nav-element active"> <img src="src/nav-img.png" width="20px"
-                class="nav-img"><span class="nav-title ">Доска</span>
+                class="nav-img"><span class="nav-title ">Доска обращений</span>
         </a>
         <a href="clients.html" class="nav-element"><img src="src/nav-img.png" width="20px" class="nav-img"><span
                 class="nav-title ">Клиенты</span></a>
@@ -91,21 +91,20 @@
     <main>
 
         <div class="main-header">
-            <div class="roboto-regular-italic"> Desk</div>
-            <div onclick="newTicket()" class="new-ticket roboto-medium-italic"> + NEW </div>
+            <div class="roboto-regular-italic"> Обращения</div>
+            <!-- <div onclick="newTicket()" class="new-ticket roboto-medium-italic"> + NEW </div> -->
+
 
             <div class="owner-filter-element active">
-                All Tickets
+                Ожидают <br> решения 
             </div>
             <div class="owner-filter-element">
-                My Tickets
+                Закрытые 
             </div>
             <div class="owner-filter-element">
-                My Tickets
+                Нерешенные 
             </div>
-            <div class="owner-filter-element">
-                My Tickets
-            </div>
+           
 
         </div>
         <div class="desk ">
@@ -184,9 +183,9 @@
 
         </div>
         <div class="admin-panel ">
-            <button class="admin-panel-btn">Assign</button>
+            <!-- <button class="admin-panel-btn">Assign</button>
             <button class="admin-panel-btn">Close</button>
-            <button class="admin-panel-btn">Delete</button>
+            <button class="admin-panel-btn">Delete</button> -->
         </div>
 
 
@@ -194,14 +193,13 @@
     </main>
     <aside>
         <img class="user-photo" src="src/uder.jpg" alt="user photo">
-        <span class="roboto-regular-italic">Vaga</span>
-
-
+        <span class="roboto-regular-italic"></span>
         <span class="roboto-regular-italic">обращений решено за месяц:</span>
-        <span>100/100</span>
-        <progress id="file" max="100" value="100"> </progress>
-        <a class="admin" href="admin.html">Админ</a>
-
+        <span ></span>
+        <progress id="file" max="100" value="0"> </progress>
+        <div class="exit"><a class="admin" href="auth.html">Выйти</a><br>
+        <a class="admin" href="admin.html">Админ</a></div>
+        
     </aside>
     <footer>
         &copy; KNITU-KAI

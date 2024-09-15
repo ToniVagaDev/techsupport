@@ -50,7 +50,7 @@
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 10px;
-            width: 200px;
+            width: 150px;
         }
 
         .submit-button {
@@ -83,7 +83,16 @@
             <input type="text" id="userName" class="form-input" placeholder="Имя пользователя" required>
             <input type="tel" id="userPhone" class="form-input" placeholder="Номер телефона" required>
             <input type="password" id="userPassword" class="form-input" placeholder="Пароль" required>
+            <select name="" id="specialist-type" class="form-input"></select>
             <button type="submit" class="submit-button">Добавить</button>
+        </form>
+
+        <form id="editUserForm" style="display: none;">
+            <input type="text" id="userNameEdit" class="form-input" placeholder="Имя пользователя" required>
+            <input type="tel" id="userPhoneEdit" class="form-input" placeholder="Номер телефона" required>
+            <input type="password" id="userPasswordEdit" class="form-input" placeholder="Пароль" required>
+            <select name="" id="specialist-typeEdit" class="form-input"></select>
+            <button type="button" class="submit-button">изменить</button>
         </form>
 
         <h2>Список пользователей</h2>
@@ -93,26 +102,16 @@
                     <th>ID</th>
                     <th>Имя</th>
                     <th>Номер телефона</th>
-                    <th>Пароль</th>
+                    <th>Тип</th>
                     <th>Действия</th>
                 </tr>
             </thead>
             <tbody id="userList">
-                <tr>
-                    <td>1</td>
-                    <td>Иван Иванов</td>
-                    <td>+7 123 456 7890</td>
-                    <td>aefesfergergr</td>
-                    <td>
-                        <span class="action-buttons" onclick="editUser(1)">Изменить</span> |
-                        <span class="action-buttons" onclick="deleteUser(1)">Удалить</span>
-                    </td>
-                </tr>
-                <!-- Другие пользователи -->
+                
             </tbody>
         </table>
     </div>
-
+    <script type="module" src="scripts/admin.js"></script>
     <script>
         document.getElementById('addUserForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -120,20 +119,17 @@
             const userPhone = document.getElementById('userPhone').value;
             const userPassword = document.getElementById('userPassword').value;
             console.log('Добавление пользователя:', userName, userPhone, userPassword);
-            // Здесь можно добавить код для отправки данных на сервер
         });
 
         function editUser(userId) {
             console.log('Изменение пользователя с ID:', userId);
-            // Здесь можно добавить код для изменения пользователя
         }
 
         function deleteUser(userId) {
             console.log('Удаление пользователя с ID:', userId);
-            // Здесь можно добавить код для удаления пользователя
         }
     </script>
-    <script src = "scripts/imask.js"></script>
+    <script  src = "scripts/imask.js"></script>
     <script src="scripts/mask.js"></script>
 
 </body>

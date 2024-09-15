@@ -28,25 +28,27 @@
                 class="nav-title ">Обращение</span></a>
     </nav>
 
-    <div onclick="closeEndTicket()" class="close-form-background hide">
+    <div onclick="closeModal('.close-form')" class="close-close-form background hide">
 
     </div>
-    <form action="/submit-your-form-handler" class="close-form hide" method="POST" enctype="multipart/form-data">
+    <div onclick="closeModal('.files-modal')" class="close-files-modal background hide">
+    </div>
+    <form  class="close-form hide" >
         <div>
             <label for="resolution">Описание решения:</label>
             <textarea id="resolution" name="resolution" rows="4" cols="50" required></textarea>
         </div>
-        <div>
+        <!-- <div>
             <label for="documentFile">Прикрепить документ:</label>
-            <input type="file" id="documentFile" name="documentFile" accept=".doc,.docx,.pdf">
-        </div>
+            <input type="file" id="documentFile" name="documentFile" accept=".doc,.docx,.pdf" multiple >
+        </div> -->
         <div>
             <label for="imageFile">Прикрепить изображение:</label>
-            <input type="file" id="imageFile" name="imageFile" accept="image/*">
+            <input type="file" id="imageFile" name="imageFile" accept="image/*" multiple >
         </div>
         <div>
             <label for="audioFile">Прикрепить аудиофайл:</label>
-            <input type="file" id="audioFile" name="audioFile" accept="audio/*">
+            <input type="file" id="audioFile" name="audioFile" accept="audio/*" multiple >
         </div>
         <div>
             
@@ -56,10 +58,10 @@
             </label>
         </div>
         <div>
-            <button onclick="closeEndTicket()" type="submit">Закрыть обращение</button>
+            <button id="request-close-btn" >Закрыть обращение</button>
         </div>
     </form>
-
+    <div class="files-modal hide"></div>
 
     <main onclick="console.log('click body')">
         <div class="main-header ">
@@ -79,34 +81,33 @@
                     <h2>Данные клиента</h2>
                     <div class="data-grid">
                         <div class="header">Имя клиента</div>
-                        <div>Иван Иванов</div>
+                        <div id="fullname"></div>
                         <div class="header">Контактный номер</div>
-                        <div>+7 123 456 7890</div>
-                        <div class="header">Электронная почта</div>
-                        <div>ivanov@example.com</div>
+                        <div id="phone"></div>
+                        <div class="header">Адрес</div>
+                        <div id="address"></div>
                         <div class="header">Тип клиента</div>
-                        <div>Частное лицо</div>
+                        <div id="client-type"></div>
                     </div>
                 </div>
                 <div>
                     <h2>Детали обращения</h2>
                     <div class="data-grid">
-                        <div class="header">Номер обращения</div>
-                        <div>12345</div>
+                        
                         <div class="header">Дата обращения</div>
-                        <div>2024-04-12</div>
+                        <div id="date"></div>
                         <div class="header">Категория проблемы</div>
-                        <div>Интернет не работает</div>
+                        <div id="request-type"></div>
                         <div class="header">Описание проблемы</div>
-                        <div>Отсутствует подключение к интернету с 10 утра</div>
+                        <div id="description"></div>
                         <div class="header">Предпринятые действия</div>
-                        <div>-</div>
+                        <div id="done"></div>
                     </div>
                 </div>
                 <div class="button-container">
                     <a href="knowledgeBase.html" class="button">База знаний</a>
-                    <a href="" class="button">Скачать файлы</a>
-                    <a  onclick="endTicket()" class="button">Закрыть обращение</a>
+                    <a  onclick="openModal('.files-modal')" class="button">показать файлы</a>
+                    <a  onclick="openModal('.close-form')" id="close-req" class="button">Закрыть обращение</a>
                 </div>
             </div>
 
@@ -119,14 +120,13 @@
     </main>
     <aside>
         <img class="user-photo" src="src/uder.jpg" alt="user photo">
-        <span class="roboto-regular-italic">Vaga</span>
-
-
+        <span class="roboto-regular-italic"></span>
         <span class="roboto-regular-italic">обращений решено за месяц:</span>
-        <span>100/100</span>
-        <progress id="file" max="100" value="100"> </progress>
-        <a style="color: black;" href="admin.html">Админ</a>
-
+        <span ></span>
+        <progress id="file" max="100" value="0"> </progress>
+        <div class="exit"><a class="admin" href="auth.html">Выйти</a><br>
+        <a class="admin" href="admin.html">Админ</a></div>
+        
     </aside>
     <footer>
         &copy; KNITU-KAI
@@ -134,6 +134,7 @@
     <script src="https://unpkg.com/imask"></script>
     <script src="scripts/mask.js"></script>
     <script src="scripts/deskScript.js"></script>
+    <script type="module" src="scripts/ticket.js"></script>
 </body>
 
 </html>

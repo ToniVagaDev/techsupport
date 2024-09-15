@@ -50,9 +50,17 @@ async function logIn(){
     const login = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
     const token = await service.logIn({login, password})
+    console.log(token)
+
     console.log(token);
     ls.setItem('token' , token.token)
-    document.location.href = 'index.html'
+    ls.setItem('type' , token.type)
+    ls.setItem('id' , token.id)
+    ls.setItem('name' , token.fullname)
+    ls.setItem('counter' , token.counter)
+    if(token.type == "ADMIN")     document.location.href = 'admin.html'
+
+    else document.location.href = 'index.html'
     
 }
 

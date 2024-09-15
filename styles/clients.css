@@ -88,11 +88,11 @@ button:hover {
 }
 
 span.address input{
-    width: 80px;
+    width: min-content;
 }
 
 span.address input.address-small{
-    width: 40px;
+    width: min-content;
 }
 
 input:disabled{
@@ -103,6 +103,8 @@ input:disabled{
 }
 .client-info-value:disabled{
     border: none;
+    -webkit-appearance: none ;
+
     background-color: rgb(255, 255, 255) ;
     opacity: 1;
     color: black;
@@ -169,4 +171,14 @@ input:disabled{
 }
 .client-modal input[type="submit"]:hover {
     background-color: #0056b3;
+}
+.phone-button{
+    width: min-content;
+    height: min-content;
+    padding: 3px 5px;
+    margin: 0;
+}
+.phone-button:disabled{
+    background-color: gray;
+    cursor:not-allowed;
 }

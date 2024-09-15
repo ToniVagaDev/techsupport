@@ -5,9 +5,12 @@ import {
 const service = new PhoneService();
 
 let requests = await service.getAllRequests();
-
 requests = Array.from(requests)
-const len = requests.length
+requests.sort(function(a, b) {
+    return b.priority - a.priority; 
+})
+
+let len = requests.length
 
 const desk = document.querySelector('.desk');
 console.log(document)
@@ -16,7 +19,7 @@ let first = 0,
     last = 10;
 
 function getNext() {
-    if(last >= len) return
+    if (last >= len) return
     first += 10;
     last += 10;
     setDesk()
@@ -24,15 +27,32 @@ function getNext() {
 
 function getPrev() {
     console.log('c')
-    if(first == 0) return
+    if (first == 0) return
     first -= 10;
     last -= 10;
     setDesk()
 }
 
+// chooseRequest(){
+//     localStorage.setItem('request', )
+// }
+document.querySelectorAll('.owner-filter-element')[0].addEventListener('click', getRequest(service.getAllRequests()))
+document.querySelectorAll('.owner-filter-element')[1].addEventListener('click', getRequest(service.getAllClosedRequests()))
+document.querySelectorAll('.owner-filter-element')[2].addEventListener('click', getRequest(service.getAllFailedRequests()))
 
+function getRequest(reqs) {
+    return async (e) => {
+        requests = await reqs
+        len = requests.length
+        document.querySelector('.owner-filter-element.active').classList.toggle('active')
+        e.target.classList.add('active')
+        setDesk();
+    }
+
+}
 
 async function setDesk() {
+
     desk.innerHTML = ''
     desk.innerHTML = `
         <div class="desk-row">
@@ -51,12 +71,21 @@ async function setDesk() {
 
     `
     const setRows = () => {
-       Array.from(requests).slice(first, last).forEach( async (request, i) => {
-        const specialistType =  await service.getSpecialistType(request.specialistType)
-        const type = await service.getRequestType(request.typeId)
-        desk.innerHTML += `
+        Array.from(requests).slice(first, last).forEach(async (request, i) => {
+            let priority;
+            if (request.priority == 0){
+                priority = 'Низкий'
+            }
+            else if (request.priority == 100){
+                priority = 'Средний'
+            }else if (request.priority == 200){
+                priority = 'Высокий'
+            }
+                const specialistType = await service.getSpecialistType(request.specialistType)
+            const type = await service.getRequestType(request.typeId)
+            desk.innerHTML += `
         <div class="desk-row">
-        <input type="button" value = "✓" class="accept-btn">
+        <input onclick = 'if(localStorage.getItem("request")){alert("у вас уже есть обращение"); return} localStorage.setItem("request", "${request._id}") ; document.location.href = "ticket.html";   ' type="button" value = "✓" class="accept-btn">
         <span class="desk-element"> ${first+i+1} </span>
         <span  class="desk-element">
              ${specialistType.name}
@@ -65,22 +94,22 @@ async function setDesk() {
             ${type.name}
         </span>
         <span class="desk-element">
-            High
+            ${priority}
         </span>
         <textarea disabled class="desk-element wide"> ${request.description} </textarea>
         <input disabled type="date" value="${request.creationDate.slice(0, 10)}" class="desk-element">
     </div>`;
 
-    if(i == 9){
-        document.querySelector('.next').addEventListener('click', getNext)
 
-        document.querySelector('.prev').addEventListener('click', getPrev)
+            document.querySelector('.next').addEventListener('click', getNext)
+
+            document.querySelector('.prev').addEventListener('click', getPrev)
+
+
+        })
     }
-        
-    })
-    }
-    setRows() 
-    
+    setRows()
+
 
     desk.innerHTML += `<div class="desk-row last-row">
     <div class="last">
@@ -90,12 +119,10 @@ async function setDesk() {
     </div>
     
     </div>`;
-    
 
 
-    document.querySelector('#pages').textContent = first+1 + '-' + last + '/' + len
+
+    document.querySelector('#pages').textContent = first + 1 + '-' + last + '/' + len
 
 }
- await setDesk();
-
- 
+await setDesk();

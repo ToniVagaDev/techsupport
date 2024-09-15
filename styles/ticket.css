@@ -47,6 +47,17 @@ label {
     margin-bottom: 10px;
     color: #666;
 }
+.files-modal{
+    position:absolute;
+    justify-self: center;
+    align-self: center;
+    z-index: 999;
+    overflow: auto;
+    max-height: 90%;
+    text-align: center;
+    width: min-content;
+    background: inherit;
+}
 
 .close-form{
     position:absolute;
@@ -130,4 +141,15 @@ h1, h2 {
 
 .button:hover {
     background-color: #4a54e1;
+}
+#description{
+    overflow: auto;
+}
+.req-img{
+    max-width: 400px;
+}
+
+.non-active{
+    background-color :  gray !important;
+    pointer-events: none !important;
 }

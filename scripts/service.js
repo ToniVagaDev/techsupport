@@ -1,9 +1,40 @@
 class PhoneService {
     _apiBase = 'http://localhost:5500/api';
+    async delResource(url) {
 
-    async postResource(url, body, headers = ''){
         const res = await fetch(`${this._apiBase}/${url}`, {
-            method: 'POST',
+            method: 'DELETE',
+            headers: {
+                'Authorization' : `bearer ${localStorage.getItem('token')}`
+            }
+        });
+        // console.log(res.status)
+        if (!res.ok) {
+            if(res.status == 403) {
+                document.location.href = 'auth.html';
+            }
+            throw new Error( (await res.json()).message);
+        }
+        return await res.json()
+    }
+
+    async deleteSupportSpecialist(id){
+        return await this.delResource(`specialist/${id}`)
+    }
+
+    async deletePhone(id){
+        return await this.delResource(`phones/${id}`)
+    }
+
+    async deleteAddress(id){
+        return await this.delResource(`address/${id}`)
+    }
+    async deleteclient(id){
+        return await this.delResource(`client/${id}`)
+    }
+    async postResource(url, body, method = 'POST' ){
+        const res = await fetch(`${this._apiBase}/${url}`, {
+            method: `${method}`,
             headers: {
                 'Content-Type' : 'application/json',
                 'Authorization' : `bearer ${localStorage.getItem('token')}`
@@ -21,19 +52,48 @@ class PhoneService {
         }
         return await res.json()
     }
+    async postSupportSpecialist(body){
+        return await this.postResource('/specialist', body)
+
+    }
+
+    async postRequest(body){
+        return await this.postResource('/request', body)
+    }
+    async updateRequest( body){
+        return await this.postResource('/requests', body, 'PUT')
+    }
+
+    async postClient(body){
+        return await this.postResource('/client', body)
+    }
+    async updateClient(body){
+        return await this.postResource('/client', body, 'PUT')
+    }
+
+
+    async postPhone(body){
+        return await this.postResource('/phones', body)
+    }
+    async updatePhone(body){
+        return await this.postResource('/phones', body, 'PUT')
+    }
+
+
+    async postAddress(body){
+        return await this.postResource('/address', body)
+    }
+    async updateAddress(body){
+        return await this.postResource('/address', body, 'PUT')
+    }
+    async updateSupportSpecialist(body){
+        return await this.postResource('/specialists', body, 'PUT')
+    }
+
+    async updateTariff(body){
+        return await this.postResource('/tariffs', body, 'PUT')
+    }
     
-    async postRequest(body, headers = ''){
-        return await this.postResource('/request', body, headers)
-    }
-    async postClient(body, headers = ''){
-        return await this.postResource('/client', body, headers)
-    }
-    async postPhone(body, headers = ''){
-        return await this.postResource('/phones', body, headers)
-    }
-    async postAddress(body, headers = ''){
-        return await this.postResource('/address', body, headers)
-    }
 
     async getResource(url) {
 
@@ -52,8 +112,22 @@ class PhoneService {
         }
         return await res.json()
     }
+
+    async getAllSupportSpecialist(){
+        return await this.getResource('/specialists')
+    }
+    async getSupportSpecialist(id){
+        return await this.getResource(`/specialist/${id}`)
+    }
+
     async getAllRequests(){
         return await this.getResource('/requests')
+    }
+    async getAllClosedRequests(){
+        return await this.getResource('/requests/closed')
+    }
+    async getAllFailedRequests(){
+        return await this.getResource('/requests/failed')
     }
     async getRequest(id){
         return await this.getResource(`/request/${id}`)
@@ -110,6 +184,10 @@ class PhoneService {
 
     async getClientByPhoneId(phoneId) {
         return await this.getResource(`/client/phone/${phoneId}`)
+    }
+
+    async getClientById(Id) {
+        return await this.getResource(`client/${Id}`)
     }
 
 }

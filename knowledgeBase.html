@@ -37,36 +37,36 @@
         <div class="container">
             <h1>База знаний</h1>
             <div class="search-box">
-                <input type="text" placeholder="Введите ключевые слова для поиска...">
-                <button>Поиск</button>
+                <input type="text" id="searchInput" placeholder="Введите ключевые слова для поиска...">
+                <button onclick="search()">Поиск</button>
             </div>
             <div id="tech" class="category">
                 <!-- Вопросы технической категории -->
                 <div class="faq-item">
-                    <div class="question">Как перезагрузить мой модем?</div>
-                    <div class="answer">Отключите модем от питания, подождите 30 секунд, затем снова подключите его к сети.</div>
+                    <div class="question">Какие инструменты используются для мониторинга сетевого трафика?</div>
+                    <div class="answer">Для мониторинга сетевого трафика часто используются инструменты такие как Wireshark, Nagios, Zabbix и др. Каждый из них имеет свои особенности и возможности, поэтому выбор зависит от конкретных требований и задач.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="question">Что делать, если скорость интернета ниже ожидаемой?</div>
-                    <div class="answer">Убедитесь, что ваше устройство не загружено программами, потребляющими большой объем данных. Попробуйте выполнить тест скорости в режиме инкогнито.</div>
+                    <div class="question">Как настроить VPN соединение на маршрутизаторе?</div>
+                    <div class="answer">Настройка VPN соединения на маршрутизаторе требует доступа к его административной панели. Настройки могут различаться в зависимости от модели маршрутизатора и используемого протокола VPN.</div>
                 </div>
             </div>
             <div id="billing" class="category ">
                 <!-- Вопросы категории биллинг -->
                 <div class="faq-item">
-                    <div class="question">Как изменить мой тарифный план?</div>
-                    <div class="answer">Войдите в ваш личный кабинет на сайте и выберите раздел "Тарифы", где можно изменить ваш текущий план.</div>
+                    <div class="question">Какие способы оплаты доступны для клиентов?</div>
+                    <div class="answer">Для оплаты услуг доступны различные способы, такие как банковские карты, электронные кошельки, банковские переводы и т.д. Подробную информацию можно найти в личном кабинете.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="question">Как проверить свой текущий баланс?</div>
-                    <div class="answer">Ваш текущий баланс можно увидеть в личном кабинете под разделом "Финансы".</div>
+                    <div class="question">Как рассчитать сумму за дополнительные услуги?</div>
+                    <div class="answer">Сумма за дополнительные услуги рассчитывается исходя из их стоимости и количества использованных единиц. Детальную информацию можно получить у бухгалтерии.</div>
                 </div>
             </div>
             <div id="general" class="category active">
                 <!-- Общие вопросы -->
                 <div class="faq-item">
-                    <div class="question">Как связаться со службой поддержки?</div>
-                    <div class="answer">Вы можете связаться со службой поддержки по телефону, электронной почте или через чат на нашем сайте.</div>
+                    <div class="question">Как организовать эффективное расписание рабочего дня?</div>
+                    <div class="answer">Для эффективной организации рабочего дня рекомендуется составить расписание, определить приоритетные задачи и делегировать работу при необходимости. Также важно учитывать личные биоритмы и время на отдых.</div>
                 </div>
             </div>
         </div>
@@ -102,6 +102,20 @@
                 item.classList.remove('active');
             });
             document.querySelector('.menu li[onclick="showCategory(\'' + categoryId + '\')"]').classList.add('active');
+        }
+
+        function search() {
+            var input = document.getElementById('searchInput').value.toLowerCase();
+            var faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(function(item) {
+                var question = item.querySelector('.question').innerText.toLowerCase();
+                var answer = item.querySelector('.answer').innerText.toLowerCase();
+                if (question.includes(input) || answer.includes(input)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
     <script src="scripts/mask.js"></script>

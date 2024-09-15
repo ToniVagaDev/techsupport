@@ -1,6 +1,6 @@
 let files = [];
 let user = {
-    role: 'admin'
+    role: ''
 }
 document.body.onload  = roleChecker;
 function roleChecker(){
@@ -119,7 +119,14 @@ function openModal(selector, afterFunc){
 function closeModal(selector){
     document.querySelector(selector).classList.toggle('hide');
     document.querySelector(`.close-${selector.split('.')[1]}`).classList.toggle('hide');
+    document.querySelectorAll(`${selector} input, ${selector} textarea`).forEach(input => {
+        input.value = "";
+    })
     document.querySelector('main').style.filter = 'none'
     document.querySelector('main').style.pointerEvents = 'all';
 }
+document.querySelectorAll('aside span')[0].textContent = `${localStorage.getItem('name')}`
+document.querySelectorAll('aside span')[2].textContent = `${localStorage.getItem('counter')}/100`
+document.querySelector('aside progress').value = localStorage.getItem('counter')
+document.querySelector('.user-logo').textContent = localStorage.getItem('name')[0]
 // newTicket();
